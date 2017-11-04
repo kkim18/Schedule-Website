@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Schedule Website</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="row p-3 bg-dark">
+    <div id="createEventColumn" class="col-8 p-3 bg-dark text-white">
+      <h1 class="text-center p-2">Create Event</h1>
+      <div class="container">
+        <form>
+          <div class="form-group m-3">
+            <label for="activityTitle">Activity Name</label>
+            <input id="eventName" type="Name" class="form-control" placeholder="Enter Name">
+          </div>
+
+          <div class="form-group m-3">
+            <label for="durationTitle">Activity Duration in Minutes</label>
+            <input type="Duration" class="form-control" placeholder="# of minutes">
+            <small id="durationSchedule" class="form-text text-muted">Please enter the # of minutes; for example, if
+                the duration is one hour, enter 60.</small>
+          </div>
+
+          <div class="form-group m-3">
+            <label for="rest">Rest Duration in Minutes</label>
+            <input type="restDuration" class="form-control" placeholder="# of minutes">
+            <small id="restDuration" class="form-text text-muted">Please enter the # of minutes; for example, if
+                the duration is one hour, enter 60.</small>
+          </div>
+
+          <div class="m-3">
+            <label for="multitasking">Can you multitask when doing this activity?</label>
+            <div class="form-check">
+              <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="multitask" id="multitask1" value="true" checked>
+                  Yes
+                  </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="multitask" id="multitask2" value="false">
+                    No
+                  </label>
+            </div>
+          </div>
+          <div class="m-3">
+            <label for="priority">Activity  Priority (1 = highest, 3 = lowest)?</label>
+            <p class="explainPriority">Priority 1: Fixed activities that have a set starting and ending time (class blocks, meetings, etc.)</p>
+            <p class="explainPriority">Priority 2: Non-fixed activities that have a set due date and/or time restrictions (HW assignments, essays, etc.)</p>
+            <p class="explainPriority">Priority 3: Other misc. non-fixed activities; everyday tasks (laundry, walking dog, etc.)</p>
+
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="priority" id="priority1" value="option1" onclick="showFixed();">
+                        1
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="priority" id="priority2" value="option2" onclick="showPreferred();"> 2
+                    </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="priority" id="priority3" value="option3" onclick="showNone();"> 3
+                    </label>
+            </div>
+          </div>
+
+          <div id="ifPriority1" class="hide form-group m-3">
+            <label for="fixedTime" class="hide">Start Time for Fixed Activity</label>
+            <br>
+            <input id="fixedTime" type="time" class="hide">
+          </div>
+
+          <div id="ifPriority2" class="hide form-group m-3">
+            <label for="preferredTime" class="hide">Preferred Time Slot</label>
+            <br>
+            After: <input id="preferredStartTime" type="time" class="hide"> <br>
+            By: <input id="preferredEndTime" type="time" class="hide"> <br>
+          </div>
+
+          <button id="createEventButton" type="button" class="d-block btn btn-outline-light m-3">Create Event</button>
+
+        </form>
+      </div>
+    </div>
+
+    <div id="scheduledEventsColumn" class="col-4 sticky-top float-right bg-secondary text-white p-3">
+      <h1 class="text-center">Your Scheduled Events</h1>
+      <div id="madeEvents" class="container">
+          <!--form goes here-->
+      </div>
+      <button id="createScheduleButton" type="submit" class="d-block btn btn-outline-light m-3 justify-content-center text-center">Create Schedule</button>
+    </div>
+
+  </div>
+
+  <script src="javascript.js"></script>
+
+</body>
+
+</html>
